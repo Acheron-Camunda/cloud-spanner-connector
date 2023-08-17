@@ -1,0 +1,644 @@
+{
+  "$schema": "https://unpkg.com/@camunda/zeebe-element-templates-json-schema/resources/schema.json",
+  "name": "Google Cloud Spanner Connector",
+  "id": "io.camunda.connector.spanner.v1",
+  "description": "Connector for Cloud Spanner",
+  "version": 1,
+  "documentationRef": "https://docs.camunda.io/docs/components/connectors/out-of-the-box-connectors/available-connectors-overview/",
+  "icon": {
+    "contents": "data:image/png;base64,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"
+  },
+  "category": {
+    "id": "connectors",
+    "name": "Connectors"
+  },
+  "appliesTo": [
+    "bpmn:Task"
+  ],
+  "elementType": {
+    "value": "bpmn:ServiceTask"
+  },
+  "groups": [
+
+    {
+      "id": "spannerConnection",
+      "label": "Spanner Connection"
+    },
+    {
+      "id": "operation",
+      "label": "Operation"
+    },
+    {
+      "id": "input",
+      "label": "input"
+    },
+    {
+      "id": "output",
+      "label": "Output Mapping"
+    }
+    
+  ],
+  "properties": [
+
+    {
+      "type": "Hidden",
+      "value": "com.acheron.camundaconnectors.db:spanner:1",
+      "editable": false,
+      "binding": {
+        "type": "zeebe:taskDefinition:type"
+      }
+    },
+
+    {
+      "id": "operationType",
+      "label": "Operation",
+      "description": "Operation to be done",
+      "type": "Dropdown",
+     
+      "choices": [
+
+        {
+          "name": "Create Table",
+          "value": "spanner.create-table"
+        },
+        {
+          "name": "Insert Data",
+          "value": "spanner.insert-data"
+        },
+        {
+          "name": "Update Data",
+          "value": "spanner.update-data"
+        },
+        {
+          "name": "Delete Data",
+          "value": "spanner.delete-data"
+        },
+        {
+          "name": "Retrieve Data",
+          "value": "spanner.retrieve-data"
+        }
+       
+      ],
+      "group": "operation",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "operation.operationType",
+        "key": "operation.operationType"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+
+    {
+      "label": "Project Id",
+      "description": "Enter the Google Spanner Project Id",
+      "type": "String",
+      "feel": "optional",
+      "group": "spannerConnection",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "spannerConnection.projectId"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+
+    {
+      "label": "Instance Name",
+      "description": "Enter your Google Cloud Spanner Instance Name",
+      "type": "String",
+      "feel": "optional",
+      "group": "spannerConnection",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "spannerConnection.instanceName"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+
+    {
+      "label": "Database Name",
+      "description": "Enter the name of the database",
+      "type": "String",
+      "feel": "optional",
+      "group": "spannerConnection",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "spannerConnection.databaseName"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Table Name",
+      "description": "Enter the name of the table to be created",
+      "type": "String",
+      "feel": "optional",
+      "group": "input",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.tableName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.create-table"
+      }
+    },
+    {
+      "label": "Columns List",
+      "description": "[{\"colName\": \"colName1\",\"dataType\": \"colDataType1\"}",
+      "type": "Text",
+      "feel": "required",
+      "group": "input",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.columnList"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.create-table"
+      }
+     
+    },
+
+    {
+      "label": "Primary Key",
+      "description": "Enter the column name that has to be the Primary Key",
+      "type": "String",
+      "feel": "optional",
+      "group": "input",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.primaryKey"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.create-table"
+      }
+    },
+
+    {
+      "label": "Table Name",
+      "description": "Enter the name of the table where data needs to be inserted",
+      "type": "String",
+      "feel": "optional",
+      "group": "input",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.tableName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.insert-data"
+      }
+    },
+    {
+      "label": "Data to be inserted",
+      "description": "Enter the data to insert in the given format: [{\"columnName1\": row1Col1Value,\"columnName2\": \"\\\"row2Col2Value\\\"\"}]  *Note: give column value in given format if it is needed to be entered as string: \"\\\"columnValue\\\"\" "  ,
+      "type": "Text",
+      "feel": "required",
+      "group": "input",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.columnList"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.insert-data"
+      }
+     
+    },
+    {
+      "label": "Table Name",
+      "description": "Enter the name of the table where data needs to be updated",
+      "type": "String",
+      "feel": "optional",
+      "group": "input",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.tableName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.update-data"
+      }
+    },
+   
+    {
+      "label": "Set: Column Name",
+      "description": "Enter the name of the Column to be updated",
+      "type": "String",
+      "feel": "optional",
+      "group": "input",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.setColumnName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.update-data"
+      }
+    },
+
+    {
+      "label": "Set: value",
+      "description": "Enter the value to be updated. *Note: If the value is a string give it in following format: \"setValue\"",
+      "type": "String",
+      "feel": "optional",
+      "group": "input",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.setValue"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.update-data"
+      }
+    },
+
+    {
+      "label": "Where: Column Name",
+      "description": "Enter the name of the Column to be the \"where\" condition",
+      "type": "String",
+      "feel": "optional",
+      "group": "input",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.whereColumnName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.update-data"
+      }
+    },
+
+    {
+      "label": "Where: value",
+      "description": "Enter the value for where condition",
+      "type": "String",
+      "feel": "optional",
+      "group": "input",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.whereValue"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.update-data"
+      }
+    },
+
+    {
+      "label": "Table Name",
+      "description": "Enter the name of the table where data needs to be deleted",
+      "type": "String",
+      "feel": "optional",
+      "group": "input",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.tableName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.delete-data"
+      }
+    },
+
+    {
+      "label": "Where: Column Name",
+      "description": "Enter the name of the Column to be the \"where\" condition",
+      "type": "String",
+      "feel": "optional",
+      "group": "input",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.whereColumnName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.delete-data"
+      }
+    },
+
+    {
+      "label": "Where: value",
+      "description": "Enter the value for where condition",
+      "type": "String",
+      "feel": "optional",
+      "group": "input",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.whereValue"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.delete-data"
+      }
+    },
+
+    {
+      "label": "Table Name",
+      "description": "Enter the name of the table where data needs to be retrieved",
+      "type": "String",
+      "feel": "optional",
+      "group": "input",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.tableName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.retrieve-data"
+      }
+    },
+
+    {
+      "id": "displayType",
+      "label": "Columns to display",
+      "description": "Choose which should be your operator for where condition",
+      "value": "*",
+      "type": "Dropdown",
+     
+      "choices": [
+
+        {
+          "name": "All",
+          "value": "*"
+        },
+        {
+          "name": "Selected Columns",
+          "value": "selectedColumns"
+        }
+        
+       
+      ],
+      "group": "input",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.displayType",
+        "key": "input.displayType"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.retrieve-data"
+      }
+    },
+
+    {
+      "label": "Column Names",
+      "description": "Enter the name of the columns to be displayed",
+      "type": "String",
+      "feel": "optional",
+      "group": "input",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.displayColumns"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "displayType",
+        "equals": "selectedColumns"
+      }
+    },
+
+   
+
+    {
+      "label": "Where: Column Name",
+      "description": "Enter the name of the Column to be the \"where\" condition. *Note if you don't want where condition please enter \"null\"",
+      "type": "String",
+      "feel": "optional",
+      "group": "input",
+      "value": "null",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.whereColumnName"
+      },
+      "constraints": {
+        "notEmpty": false
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.retrieve-data"
+      }
+    },
+    {
+      
+      "label": "Operator",
+      "description": "Choose which should be your operator for where condition",
+      "type": "Dropdown",
+      "value": "=",
+      "choices": [
+
+        {
+          "name": "=",
+          "value": "="
+        },
+        {
+          "name": ">",
+          "value": ">"
+        },
+        {
+          "name": "<",
+          "value": "<"
+        }
+        
+       
+      ],
+      "group": "input",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.operatorType",
+        "key": "input.operatorType"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.retrieve-data"
+      }
+    },
+
+    {
+      "label": "Where: value",
+      "description": "Enter the value for where condition. . *Note if you don't want where condition please enter \"null\". If your value is string enter as \"\\\"whereValue\\\"\"",
+      "type": "String",
+      "feel": "optional",
+      "group": "input",
+      "value": "null",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.whereValue"
+      },
+      "constraints": {
+        "notEmpty": false
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.retrieve-data"
+      }
+    },
+
+    {
+      "label": "Limit",
+      "description": "Enter limit value. *Note if you don't want where condition please enter \"null\"",
+      "type": "String",
+      "feel": "optional",
+      "group": "input",
+      "value": "null",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.limit"
+      },
+      "constraints": {
+        "notEmpty": false
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.retrieve-data"
+      }
+    },
+
+    {
+      "label": "Order By: Column Name",
+      "description": "Enter limit value. *Note if you don't want where condition please enter \"null\"",
+      "type": "String",
+      "feel": "optional",
+      "group": "input",
+      "value": "null",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.orderColumnName"
+      },
+      "constraints": {
+        "notEmpty": false
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.retrieve-data"
+      }
+    },
+
+    {
+      
+      "label": "Order By:",
+      "description": "Choose whether order should be Ascending or Descending",
+      "type": "Dropdown",
+      "value": "ASC",
+      "choices": [
+
+        {
+          "name": "Ascending",
+          "value": "ASC"
+        },
+        {
+          "name": "Descending",
+          "value": "DESC"
+        }
+        
+       
+      ],
+      "group": "input",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input.orderType",
+        "key": "input.orderType"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operationType",
+        "equals": "spanner.retrieve-data"
+      }
+    },
+    
+
+
+
+
+    {
+      "label": "Result Variable",
+      "description": "Name of variable to store the response in",
+      "group": "output",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "resultVariable"
+      }
+    },
+    {
+      "label": "Result Expression",
+      "description": "Expression to map the response into process variables",
+      "group": "output",
+      "type": "Text",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "resultExpression"
+      }
+    }
+    
+   
+    
+
+   
+
+    
+   
+   
+  ]
+} 

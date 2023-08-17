@@ -1,0 +1,2 @@
+INDEX VERSION 1.131+D:\Camunda\Connector\STS_local\cloud-spanner-connector\connector-spanner\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index

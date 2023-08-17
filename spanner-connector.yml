@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  spanner-connector:
+    image: spannerconnector:latest
+    container_name: spanner-connector
+    environment:
+      - ZEEBE_CLIENT_BROKER_GATEWAY-ADDRESS=zeebe:26500
+      - ZEEBE_CLIENT_SECURITY_PLAINTEXT=true
+      - CAMUNDA_CONNECTOR_POLLING_ENABLED=false
+      - CAMUNDA_CONNECTOR_WEBHOOK_ENABLED=false
+      - SPRING_MAIN_WEB-APPLICATION-TYPE=none
+      - OPERATE_CLIENT_ENABLED=false
+      - JSON_CREDENTIALS_FILEPATH=/spanner/spanner-key.json
+    networks:
+      - camunda-platform-828_camunda-platform
+    volumes:
+      - type: bind
+        source: C:\Spanner\
+        target: /spanner
+
+networks:
+  camunda-platform-828_camunda-platform:
+    external: true 
