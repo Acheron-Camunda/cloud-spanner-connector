@@ -16,7 +16,7 @@ services:
       - camunda-platform-828_camunda-platform
     volumes:
       - type: bind
-        source: C:\Spanner\
+        source: Provide the file path for credential json file
         target: /spanner
 
 networks:
