@@ -161,3 +161,6 @@ Data to be inserted SampleJSON
 #### Note
 
 - Columns to display: If "All" is selected, all the columns will be retrieved. If "Selected Columns" is selected, then only the selected columns will be retrieved
+
+## Contact Information
+For any queries and further support, please drop us a mail at camunda.support@acheron-tech.com
