@@ -162,5 +162,12 @@ Data to be inserted SampleJSON
 
 - Columns to display: If "All" is selected, all the columns will be retrieved. If "Selected Columns" is selected, then only the selected columns will be retrieved
 
+## Cloud Spanner Connector Resources
+
+| Content        | Link                                                                                                      |
+|----------------|-----------------------------------------------------------------------------------------------------------|
+| YouTube Video  | [Acheron's Camunda Connector for GCP Cloud Spanner - Create Table: A Developer's Walkthrough]([https://www.youtube.com/watch?v=q4Pc4Wz6M7Q](https://youtu.be/RlnWS0kKwlU?feature=shared))        |
+| Blog Post      | [GCP Cloud Spanner Connector for Camunda 8]([https://blog.acheron-tech.com/google-cloud-storage-connector/](https://blog.acheron-tech.com/camunda-cloud-spanner-connector/))|
+
 ## Contact Information
 For any queries and further support, please drop us a mail at camunda.support@acheron-tech.com
